@@ -9,4 +9,5 @@ vim.keymap.set("i", "<C-t>", 'copilot#Accept("<CR>")', {
   expr = true,
   replace_keycodes = false,
 })
-vim.notify("keymap loaded")
+vim.keymap.set("i", "<C-w>", "<Plug>(copilot-accept-word)")
+vim.keymap.set("i", "<C-q>", "<Plug>(copilot-accept-line)")
