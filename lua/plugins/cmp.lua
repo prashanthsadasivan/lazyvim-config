@@ -13,3 +13,4 @@ end
 
 -- Creating a command in normal mode
 vim.api.nvim_create_user_command("ToggleCmp", toggle_cmp, {})
+return {}
