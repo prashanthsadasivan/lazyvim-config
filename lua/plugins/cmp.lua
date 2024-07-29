@@ -34,7 +34,6 @@ return {
             ppselect = true,
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly ppetselected items.
           ["<C-CR>"] = function(fallback)
-            require("notify")("My super important message")
             cmp.abort()
             -- fallback()
           end,
