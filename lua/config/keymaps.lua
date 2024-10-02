@@ -9,6 +9,9 @@ vim.keymap.set("i", "<C-t>", 'copilot#Accept("<CR>")', {
 })
 vim.keymap.set("i", "<C-w>", "<Plug>(copilot-accept-word)")
 vim.keymap.set("i", "<C-q>", "<Plug>(copilot-accept-line)")
+
+-- delete the default crappy git browse via lazygit
+-- vim.keymap.del("n", "<leader>gB")
 -- vim.api.nvim_set_keymap(
 --   "n",
 --   "<LocalLeader>r",
