@@ -1,6 +1,6 @@
 local ok, _ = pcall(require, "config.secrets")
 if not ok then
-  require("notify")("no config secrets found")
+  vim.notify("no config secrets found")
   return {}
 end
 
