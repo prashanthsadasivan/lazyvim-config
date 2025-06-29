@@ -1,14 +1,28 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-vim.keymap.set("n", "<C-p>", require("telescope.builtin").find_files)
-vim.keymap.set("n", "<C-f>", require("telescope.builtin").live_grep)
 vim.keymap.set("i", "<C-t>", 'copilot#Accept("<CR>")', {
   expr = true,
   replace_keycodes = false,
 })
 vim.keymap.set("i", "<C-w>", "<Plug>(copilot-accept-word)")
 vim.keymap.set("i", "<C-q>", "<Plug>(copilot-accept-line)")
+
+local function smart_close()
+  local buf_count = #vim.fn.getbufinfo({ buflisted = 1 })
+
+  -- If this is the last buffer, quit Neovim
+  if buf_count <= 1 then
+    vim.cmd("quit")
+  else
+    -- Close current buffer
+    vim.cmd("bdelete")
+  end
+end
+
+-- Create command and abbreviation
+vim.api.nvim_create_user_command("Q", smart_close, {})
+vim.cmd("cnoreabbrev q Q")
 
 -- delete the default crappy git browse via lazygit
 -- vim.keymap.del("n", "<leader>gB")

@@ -2,7 +2,7 @@ alias oldvim="vim"
 alias vim="nvim"
 alias lg="lazygit"
 
-export NVIM_HOME="$HOME/.config/nvim"
+export NVIM_DIR="$HOME/.config/nvim"
 
 
 show_notification() {
