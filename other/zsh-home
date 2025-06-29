@@ -1,0 +1,42 @@
+alias oldvim="vim"
+alias vim="nvim"
+alias lg="lazygit"
+
+export NVIM_HOME="$HOME/.config/nvim"
+
+
+show_notification() {
+    local title="$1"
+    local message="$2"
+    alerter -title "$title" -message "$message" -sound default -actions "OK"
+}
+
+# Function to be called at the end of commands
+notify() {
+    local exit_status=$?
+    if [ $exit_status -eq 0 ]; then
+        show_notification "Command Succeeded" "The command was successful"
+    else
+        show_notification "Command Failed" "The command failed with exit status $exit_status"
+    fi
+    return $exit_status
+}
+
+# Alt-a to end of line
+bindkey '^[a' end-of-line
+
+# Ctrl-w to move forward one word
+bindkey '^w' forward-word
+
+# Ctrl-b to move backward one word
+bindkey '^b' backward-word
+
+# Alt-b to delete word backward
+bindkey '^[b' backward-kill-word
+
+
+# Alt-w to delete word backward
+bindkey '^[b' backward-kill-word
+
+# Alt-w to delete word forward
+bindkey '^[w' kill-word
