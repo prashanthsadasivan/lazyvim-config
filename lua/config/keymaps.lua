@@ -12,13 +12,25 @@ local function smart_close()
   local buf_count = #vim.fn.getbufinfo({ buflisted = 1 })
 
   -- If this is the last buffer, quit Neovim
-  if buf_count <= 1 then
+  if buf_count == 0 then
     vim.cmd("quit")
   else
     -- Close current buffer
     vim.cmd("bdelete")
   end
 end
+
+local function close_all_buffers()
+  -- Close all buffers but keep one empty buffer
+  vim.cmd(":%bd|e#|bd#")
+end
+
+-- Regular q closes current buffer
+vim.cmd("cnoreabbrev q bd")
+
+-- qa closes all buffers
+vim.api.nvim_create_user_command("QA", close_all_buffers, {})
+vim.cmd("cnoreabbrev qa QA")
 
 -- Create command and abbreviation
 vim.api.nvim_create_user_command("Q", smart_close, {})
