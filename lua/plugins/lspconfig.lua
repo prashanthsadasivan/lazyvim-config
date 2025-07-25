@@ -1,23 +1,38 @@
--- Adding swift lsp manually because it's not available through mason
-
-require("lspconfig").sourcekit.setup({})
-require("lspconfig").dartls.setup({
-  cmd = { "dart", "language-server", "--protocol=lsp" },
-  filetypes = { "dart" },
-  init_options = {
-    closingLabels = true,
-    flutterOutline = true,
-    onlyAnalyzeProjectsWithOpenFiles = true,
-    outline = true,
-    suggestFromUnimportedLibraries = true,
-  },
-  -- root_dir = root_pattern("pubspec.yaml"),
-  settings = {
-    dart = {
-      completeFunctionCalls = true,
-      showTodos = true,
+return {
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        -- For servers not in Mason, set mason = false
+        sourcekit = { mason = false },
+        dartls = {
+          mason = false, -- if not available in Mason
+          cmd = { "dart", "language-server", "--protocol=lsp" },
+          filetypes = { "dart" },
+          init_options = {
+            closingLabels = true,
+            flutterOutline = true,
+            onlyAnalyzeProjectsWithOpenFiles = true,
+            outline = true,
+            suggestFromUnimportedLibraries = true,
+          },
+          settings = {
+            dart = {
+              completeFunctionCalls = true,
+              showTodos = true,
+            },
+          },
+        },
+        vtsls = {
+          settings = {
+            typescript = {
+              tsserver = {
+                maxTsServerMemory = 8096,
+              },
+            },
+          },
+        },
+      },
     },
   },
-})
-
-return {}
+}

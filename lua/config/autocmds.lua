@@ -7,7 +7,7 @@ vim.api.nvim_create_user_command("QA", function()
   -- Get list of normal buffers (listed, real files) before wiping
 
   -- Wipe only normal buffers (this will prompt to save if needed)
-  vim.cmd(":%bd")
+  vim.cmd("silent! %bd")
 
   -- Close all tabs except the current one
   vim.cmd("silent! tabonly")
