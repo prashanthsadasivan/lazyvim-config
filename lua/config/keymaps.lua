@@ -9,7 +9,6 @@ vim.keymap.set("i", "<C-w>", "<Plug>(copilot-accept-word)")
 vim.keymap.set("i", "<C-q>", "<Plug>(copilot-accept-line)")
 
 -- Regular q closes current buffer
-vim.cmd("cnoreabbrev q bd")
 
 -- delete the default crappy git browse via lazygit
 -- vim.keymap.del("n", "<leader>gB")
