@@ -22,6 +22,19 @@ notify() {
     return $exit_status
 }
 
+worktree() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: worktree <name>"
+    return 1
+  fi
+  local name="$1"
+  local dir="../w-$name"
+  local branch="prashanth/$name"
+
+  git worktree add "$dir" -b "$branch"
+}
+
+
 # Alt-a to end of line
 bindkey '^[a' end-of-line
 
