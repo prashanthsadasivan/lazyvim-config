@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        elixirls = { mason = false }, -- disables Mason autoinstall
         -- For servers not in Mason, set mason = false
         sourcekit = { mason = false },
         dartls = {
