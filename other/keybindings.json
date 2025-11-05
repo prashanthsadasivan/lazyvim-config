@@ -1,0 +1,115 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+l",
+    "command": "composerMode.chat"
+  },
+  // Navigate between editor and terminal/panels using Ctrl+hjkl (matching your tmux)
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateDown"
+  },
+
+  // Split editor vertically (like tmux split-window)
+  {
+    "key": "ctrl+e t",
+    "command": "workbench.action.terminal.splitActiveTerminal",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+e |",
+    "command": "workbench.action.splitEditorRight"
+  },
+
+  // Split editor horizontally
+  {
+    "key": "ctrl+e -",
+    "command": "workbench.action.splitEditorDown"
+  },
+
+  // Toggle terminal (like Ctrl+e Ctrl+t in your tmux)
+  {
+    "key": "ctrl+e ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+
+  // Create new terminal in editor area
+  {
+    "key": "ctrl+e t",
+    "command": "workbench.action.createTerminalEditor",
+    "when": "!terminalFocus"
+  },
+
+  // Close pane/editor (like kill-pane)
+  {
+    "key": "ctrl+e x",
+    "command": "workbench.action.closeActiveEditor"
+  },
+
+  // Close terminal
+  {
+    "key": "ctrl+e x",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+
+  // Resize panes with Alt+Arrow keys (matching your M-Arrow bindings)
+  {
+    "key": "alt+left",
+    "command": "workbench.action.decreaseViewWidth"
+  },
+  {
+    "key": "alt+right",
+    "command": "workbench.action.increaseViewWidth"
+  },
+  {
+    "key": "alt+up",
+    "command": "workbench.action.decreaseViewHeight"
+  },
+  {
+    "key": "alt+down",
+    "command": "workbench.action.increaseViewHeight"
+  },
+
+  // Focus terminal from editor
+  {
+    "key": "ctrl+e ctrl+e",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus"
+  },
+
+  // Focus editor from terminal
+  {
+    "key": "ctrl+e ctrl+e",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+
+  // Zoom/maximize editor group (like your tmux zoom)
+  {
+    "key": "ctrl+e z",
+    "command": "workbench.action.toggleMaximizeEditorGroup"
+  },
+
+  // Equal layout (tile all windows)
+  {
+    "key": "ctrl+e =",
+    "command": "workbench.action.evenEditorWidths"
+  }
+]
