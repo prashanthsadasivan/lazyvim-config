@@ -15,6 +15,14 @@ return {
     },
   },
   keys = {
-    { "<C-p>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
+    { "<C-p>", LazyVim.pick("files", { cwd = LazyVim.root() }), desc = "Find Files (cwd)" },
+    {
+      "\\",
+      function()
+        Snacks.explorer({ cwd = LazyVim.root() })
+      end,
+      mode = "n",
+      desc = "Find Files (cwd)",
+    },
   },
 }
