@@ -8,7 +8,7 @@ export NVIM_DIR="$HOME/.config/nvim"
 show_notification() {
     local title="$1"
     local message="$2"
-    alerter -title "$title" -message "$message" -sound default -actions "OK"
+    alerter --title "$title" --message "$message" --sound default --actions "OK"
 }
 # Function to be called at the end of commands
 notify() {
