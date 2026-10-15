@@ -33,9 +33,39 @@ return {
           filename_first = true,
         },
       },
+
+      sources = {
+        explorer = {
+          -- preview highlighted files in the main editor window while navigating
+          layout = { preset = "sidebar", preview = "main" },
+        },
+      },
     },
   },
   keys = {
+    {
+      -- git log -L fails (noisy "Command failed") on special buffers, untracked files,
+      -- and lines past the committed file length, so check first and fall back to file log
+      "<leader>gb",
+      function()
+        local file = vim.api.nvim_buf_get_name(0)
+        if vim.bo.buftype ~= "" or file == "" or vim.fn.filereadable(file) == 0 then
+          return Snacks.notify.warn("Git blame: focus a file buffer first")
+        end
+        local line = vim.api.nvim_win_get_cursor(0)[1]
+        local dir = vim.fn.fnamemodify(file, ":h")
+        local res = vim
+          .system({ "git", "log", "--no-patch", "--pretty=format:%h", "-L", line .. ",+1:" .. file }, { cwd = dir })
+          :wait()
+        if res.code == 0 and res.stdout ~= "" then
+          Snacks.picker.git_log_line()
+        else
+          Snacks.notify.info("Line not in git history yet, showing file log")
+          Snacks.picker.git_log_file()
+        end
+      end,
+      desc = "Git Blame Line",
+    },
     {
       "<C-p>",
       function()
